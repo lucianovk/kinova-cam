@@ -11,6 +11,10 @@ Há duas versões:
 | **anel bipartido** | `clamp_ring.py` | direto no punho | normal (pinos pogo) |
 | espaçador | `adapter.py` | sobre o espaçador (+12 mm) | **interrompida** (ver abaixo) |
 
+<table>
+<tr><td align="center"><img src="out/images/02_punho_lado_camera.png" alt="Anel no punho, lado da câmera" width="260"><br><sub>Anel no punho, lado da câmera</sub></td><td align="center"><img src="out/images/03_punho_parafusos.png" alt="Lado dos parafusos M4" width="260"><br><sub>Lado dos parafusos M4</sub></td><td align="center"><img src="out/images/04_punho_lateral.png" alt="Lateral, com a 2F-85" width="260"><br><sub>Lateral, com a 2F-85</sub></td></tr>
+</table>
+
 ## Versão anel bipartido
 
 Duas metades que abraçam o pescoço do módulo de interface, entre os botões de
@@ -44,6 +48,10 @@ continua montada direto no punho, com os pinos pogo ligados.
 - **Impressão e montagem:** ver [IMPRESSAO.md](IMPRESSAO.md). Os STL já saem
   na orientação de impressão (face traseira na mesa).
 
+<table>
+<tr><td align="center"><img src="out/images/05_anel_camera.png" alt="Anel com a D435i" width="260"><br><sub>Anel com a D435i</sub></td><td align="center"><img src="out/images/06_anel_traseira.png" alt="Traseira: apoio e furos M3" width="260"><br><sub>Traseira: apoio e furos M3</sub></td><td align="center"><img src="out/images/07_explodida.png" alt="Vista explodida" width="260"><br><sub>Vista explodida</sub></td></tr>
+</table>
+
 ### Campo de visão
 
 As montagens incluem os cones de visão da D435i (`FOV_D435i`): profundidade
@@ -54,6 +62,10 @@ oficial da Intel. Os dedos da 2F-85 ficam dentro dos dois campos, a cerca de
 mínima de profundidade da D435i em 1280 × 720 (cerca de 280 mm, pelo
 datasheet). Para medir profundidade entre os dedos, use resolução menor
 (424 × 240 chega a cerca de 105 mm) ou ajuste o *disparity shift*.
+
+<table>
+<tr><td align="center"><img src="out/images/09_campo_de_visao.png" alt="Campo de visão (azul: profundidade; verde: RGB)" width="260"><br><sub>Campo de visão (azul: profundidade; verde: RGB)</sub></td><td align="center"><img src="out/images/08_campo_de_visao_lateral.png" alt="Campo de visão, lateral" width="260"><br><sub>Campo de visão, lateral</sub></td><td align="center"><img src="out/images/01_robo_completo.png" alt="Gen3 6DOF completo" width="260"><br><sub>Gen3 6DOF completo</sub></td></tr>
+</table>
 
 ## Versão espaçador
 
