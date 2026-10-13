@@ -1,0 +1,9 @@
+.venv/
+vendor/
+__pycache__/
+# saídas: versionar só as peças e as imagens; montagens (com CAD de terceiros) se regeneram
+out/*
+!out/images/
+!out/ring_camera_half.*
+!out/ring_lower_half.*
+!out/adapter.*
