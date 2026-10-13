@@ -30,7 +30,7 @@ continua montada direto no punho, com os pinos pogo ligados.
   1 mm entre as metades para o aperto. As orelhas ficam só na parte traseira,
   para não atrapalhar o dedo nos botões.
 - A câmera fica no topo (+Y), encostada pela face traseira num apoio inclinado
-  15°, com 2x M3 × 8 por trás. A base do apoio se une ao anel em todo o
+  15°, com 2x M3 × 10 por trás. A base do apoio se une ao anel em todo o
   comprimento (da face frontal à traseira) e em toda a largura, com filete de
   6 mm na junção. **Parafuse a câmera na metade de cima antes de
   montar o anel no robô**: depois, o acesso aos M3 fica apertado.
@@ -44,7 +44,7 @@ continua montada direto no punho, com os pinos pogo ligados.
 - Não aperte demais: a carcaça do módulo tem cerca de 2 mm de parede. Se
   quiser uma fita de borracha no furo, aumente `bore_clearance` em `params.py`.
 - Ferragens: 2x M4 × 16 ISO 4762 + 2x porca M4 ISO 4032 (a ponta sai cerca
-  de 2 mm além da orelha) e 2x M3 × 8 para a câmera.
+  de 2 mm além da orelha) e 2x M3 × 10 para a câmera.
 - **Impressão e montagem:** ver [IMPRESSAO.md](IMPRESSAO.md). Os STL já saem
   na orientação de impressão (face traseira na mesa).
 
@@ -165,8 +165,9 @@ Sem esses arquivos, o projeto usa um envelope do datasheet (90 × 25 × 25, M3 a
 - 1x pino Ø4 × 10 prensado por baixo, com 4 mm salientes para o furo do punho.
   O pino da própria garra entra por cima no mesmo furo; sobram cerca de 2 mm
   entre os dois.
-- 2x M3 × 8 para a câmera (5 mm de material + 3 mm na rosca da D435i, que
-  tem 3,5 mm de profundidade).
+- 2x M3 × 10 para a câmera (8 mm de material sob a cabeça + 2 mm na rosca da
+  D435i, que tem 3,5 mm de profundidade; M3 × 11 daria 3 mm). Rebaixo da
+  cabeça Ø7,5.
 
 ## Pontos a verificar
 

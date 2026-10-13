@@ -23,7 +23,10 @@ português.
   sextavado (3,4 mm) na metade da câmera; furos Ø4,5.
 - **M4 × 16 confirmado pelo usuário** (sai ~2 mm além da orelha; M4 × 14
   ficaria rente, M4 × 12 pegaria só 1,6 mm de rosca).
-- Câmera: 2x M3 × 8 por trás (5 mm de material + 3 mm na rosca da D435i).
+- Câmera: 2x M3 × 10 por trás (8 mm de material + 2 mm na rosca da D435i).
+  Em 2026-10-13 o usuário pediu: parafusos entravam demais → material sob a
+  cabeça 5 → 8 mm (`m3_screw_engage`) e rebaixo Ø6,5 → Ø7,5 (`m3_cbore_d`).
+  Vale também para o espaçador (mesmos parâmetros).
 
 ## Impressão (IMPRESSAO.md)
 

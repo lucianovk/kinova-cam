@@ -28,7 +28,7 @@ Por que essa orientação:
   horizontal, perto do limite usual de 45°. Na maioria das impressoras sai
   sem suporte. Se o fatiador marcar essa face, use suporte **só a partir da
   mesa**; não deve haver suporte dentro do furo nem nos alojamentos.
-- Os rebaixos das cabeças M3 (Ø6,5) e os furos M4 horizontais são pontes
+- Os rebaixos das cabeças M3 (Ø7,5) e os furos M4 horizontais são pontes
   curtas e saem sem suporte.
 
 ## Material e parâmetros
@@ -60,13 +60,14 @@ elefante). A entrada do furo tem chanfro de 0,5 mm para isso.
 
 ## Montagem
 
-Ferragens: 2x M4 × 16 ISO 4762 (allen), 2x porca M4 ISO 4032, 2x M3 × 8 para
-a câmera. A ponta do M4 × 16 sai cerca de 2 mm além da porca.
+Ferragens: 2x M4 × 16 ISO 4762 (allen), 2x porca M4 ISO 4032, 2x M3 × 10 para
+a câmera (8 mm de material sob a cabeça + 2 mm na rosca). A ponta do M4 × 16
+sai cerca de 2 mm além da porca.
 
 1. **Porcas M4:** empurre cada porca no alojamento sextavado das orelhas da
    metade da câmera, pelo lado de fora. O alojamento tem 7,3 mm entre faces
    para porca de 7,0. Se ficar solta, uma gota de cola segura até a montagem.
-2. **Câmera:** prenda a D435i no apoio com os 2x M3 × 8, por trás, **antes de
+2. **Câmera:** prenda a D435i no apoio com os 2x M3 × 10, por trás, **antes de
    pôr o anel no robô**. Com o anel no punho, o acesso aos M3 fica apertado.
 3. **Anel:** encaixe as duas metades no pescoço do módulo de interface, atrás
    dos botões de admitância (o lado mais estreito do furo vai para a junta 6).

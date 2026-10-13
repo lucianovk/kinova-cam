@@ -70,8 +70,8 @@ class Mount:
     riser: float = 6.0  # altura mínima do apoio acima do flange
     pad_w: float = 70.0  # largura do apoio da câmera (X)
     m3_clear_d: float = 3.4
-    m3_cbore_d: float = 6.5
-    m3_screw_engage: float = 5.0  # material entre cabeça M3 e câmera
+    m3_cbore_d: float = 7.5  # cabeça M3 (5,5) + folga; era 6,5
+    m3_screw_engage: float = 8.0  # material entre cabeça M3 e câmera; era 5 (parafusos entravam demais)
     tab_fillet: float = 6.0  # junção aba/disco
     edge_fillet: float = 2.0  # bordas externas
     tool_face_chamfer: float = 0.5  # borda da face onde assenta a garra
