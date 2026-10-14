@@ -5,5 +5,9 @@ __pycache__/
 out/*
 !out/images/
 !out/ring_camera_half.*
+!out/ring_rgb_camera_half.*
+!out/ring_stereo_camera_half.*
+!out/ring_d405_camera_half.*
 !out/ring_lower_half.*
-!out/adapter.*
+# malhas das câmeras: CAD da Intel (regenerar com scripts/ros_export.py)
+ros/kinova_cam_description/meshes/*_camera.stl

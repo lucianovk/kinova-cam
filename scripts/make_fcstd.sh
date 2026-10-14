@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Gera o projeto FreeCAD da montagem completa e o deixa aberto no FreeCAD.
 #
-#   scripts/make_fcstd.sh          # versão espaçador
-#   scripts/make_fcstd.sh ring     # versão anel bipartido
+#   scripts/make_fcstd.sh              # anel original
+#   scripts/make_fcstd.sh ring_rgb     # anel com o RGB centrado na garra
+#
+# Rode antes: build.py --full
 #
 # O FreeCAD do snap só lê arquivos dentro do $HOME, então o trabalho é feito
 # em ~/snap/freecad/common/kinova-cam e o .FCStd é copiado de volta para out/.
@@ -10,7 +12,7 @@
 set -euo pipefail
 root="$(cd "$(dirname "$0")/.." && pwd)"
 stage="$HOME/snap/freecad/common/kinova-cam"
-name="kinova_gen3_d435i${1:+_$1}"
+name="kinova_gen3_d435i_${1:-ring}"
 fcstd="$stage/$name.FCStd"
 mkdir -p "$stage"
 cp "$root/out/$name.step" "$root/scripts/make_fcstd.py" "$stage/"

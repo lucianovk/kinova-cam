@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- Gerado por scripts/ros_export.py (kinova-cam): ring_stereo — D435i com o meio da linha de base no eixo da garra, 20°.
+     URDF isolado (raiz end_effector_link), para conferir com check_urdf / RViz. -->
+<robot name="kinova_cam_ring_stereo">
+  <link name="end_effector_link"/>
+  <joint name="camera_mount_joint" type="fixed">
+    <parent link="end_effector_link"/>
+    <child link="camera_mount_link"/>
+    <origin xyz="0 0 0.00287" rpy="0 0 0"/>
+  </joint>
+  <link name="camera_mount_link">
+    <visual>
+      <geometry><mesh filename="package://kinova_cam_description/meshes/ring_stereo_camera_half.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="ring_stereo_camera_half"><color rgba="0.85 0.45 0.1 1"/></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://kinova_cam_description/meshes/ring_stereo_camera_half.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+    <visual>
+      <geometry><mesh filename="package://kinova_cam_description/meshes/ring_lower_half.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="ring_lower_half"><color rgba="0.85 0.45 0.1 1"/></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://kinova_cam_description/meshes/ring_lower_half.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </link>
+  <joint name="camera_joint" type="fixed">
+    <parent link="camera_mount_link"/>
+    <child link="camera_link"/>
+    <origin xyz="0.025 0.065683 0.002821" rpy="0 -1.22173 -1.5708"/>
+  </joint>
+  <link name="camera_link"/>
+</robot>

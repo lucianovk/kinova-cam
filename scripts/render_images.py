@@ -1,4 +1,4 @@
-"""Renderiza imagens da versão anel no FreeCAD (chamado por render_images.sh).
+"""Renderiza imagens de uma versão do anel no FreeCAD (chamado por render_images.sh).
 
 Lê os STEP do mesmo diretório e grava PNGs em images/. Roda dentro da
 interface gráfica, que preserva as cores do STEP, e fecha o FreeCAD no fim.
@@ -14,21 +14,26 @@ from PySide import QtCore
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "images")
 W, H = 1920, 1440
+with open(os.path.join(HERE, "render_job.txt")) as f:
+    VARIANT = f.read().strip()  # ring | ring_rgb
+FULL = f"kinova_gen3_d435i_{VARIANT}.step"
+WRIST = f"wrist_{VARIANT}_assembly.step"
+EXPLODED = f"wrist_{VARIANT}_exploded.step"
 
 # (arquivo, nome da imagem, direção de visada, foco, ocultar)
 # "FOV" são os cones de visão da câmera, mostrados só nas imagens 08 e 09.
 # direção: do olho para a cena. Montagem completa: braço em +Z, câmera em +Y;
 # montagens do punho: ferramenta em +Z, câmera em +Y.
 SHOTS = [
-    ("kinova_gen3_d435i_ring.step", "01_robo_completo", (-0.9, -1.0, -0.35), None, ("FOV",)),
-    ("kinova_gen3_d435i_ring.step", "02_punho_lado_camera", (-0.8, -1.0, -0.45), "Clamp_Ring", ("FOV",)),
-    ("kinova_gen3_d435i_ring.step", "03_punho_parafusos", (-0.7, 1.0, -0.25), "Clamp_Ring", ("FOV",)),
-    ("kinova_gen3_d435i_ring.step", "04_punho_lateral", (-1.0, 0.0, 0.0), "Robotiq", ("FOV",)),
-    ("wrist_ring_assembly.step", "05_anel_camera", (-0.9, -1.0, -0.6), None, ("Robotiq", "FOV")),
-    ("wrist_ring_assembly.step", "06_anel_traseira", (-0.6, -0.8, 0.9), None, ("Robotiq", "FOV")),
-    ("wrist_ring_exploded.step", "07_explodida", (-1.0, -0.55, -0.6), None, ()),
-    ("kinova_gen3_d435i_ring.step", "08_campo_de_visao_lateral", (-1.0, 0.0, 0.0), "FOV_D435i", ()),
-    ("kinova_gen3_d435i_ring.step", "09_campo_de_visao", (-0.8, -1.0, -0.45), "FOV_D435i", ()),
+    (FULL, "01_robo_completo", (-0.9, -1.0, -0.35), None, ("FOV",)),
+    (FULL, "02_punho_lado_camera", (-0.8, -1.0, -0.45), "Clamp_Ring", ("FOV",)),
+    (FULL, "03_punho_parafusos", (-0.7, 1.0, -0.25), "Clamp_Ring", ("FOV",)),
+    (FULL, "04_punho_lateral", (-1.0, 0.0, 0.0), "Robotiq", ("FOV",)),
+    (WRIST, "05_anel_camera", (-0.9, -1.0, -0.6), None, ("Robotiq", "FOV")),
+    (WRIST, "06_anel_traseira", (-0.6, -0.8, 0.9), None, ("Robotiq", "FOV")),
+    (EXPLODED, "07_explodida", (-1.0, -0.55, -0.6), None, ()),
+    (FULL, "08_campo_de_visao_lateral", (-1.0, 0.0, 0.0), "FOV_D", ()),
+    (FULL, "09_campo_de_visao", (-0.8, -1.0, -0.45), "FOV_D", ()),
 ]
 
 

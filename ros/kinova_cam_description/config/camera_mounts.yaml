@@ -1,0 +1,54 @@
+# Gerado por scripts/ros_export.py (kinova-cam). Valores do CAD, sem calibração.
+# end_effector_link: ros2_kortex (Gen3 6DOF), no eixo da junta 6, 2.87 mm atrás da face do aro Ø75.
+# camera_link: realsense-ros, imageador esquerdo no plano de profundidade zero
+# (x frente, y esquerda, z cima). rpy em rad (eixos fixos x, y, z); quat x y z w.
+# Montagem: câmera do lado +Y do end_effector_link (oposto ao deslocamento dos
+# botões de admitância), orelhas do anel alinhadas com os botões, câmera de pé.
+
+ring:
+  description: "D435i centrada no punho, 15° (versão original)"
+  camera: D435i
+  parent_frame: end_effector_link
+  child_frame: camera_link
+  xyz: [0.0175, 0.053661, 0.005196]
+  rpy: [0, -1.309, -1.5708]
+  quat_xyzw: [0.430459, 0.430459, 0.560986, -0.560986]
+  depth_profile: "424x240 (Z mín ~105 mm)"
+  mount_mass_kg_pla: 0.092  # anel impresso (estimativa, sem câmera nem parafusos)
+  mount_com_in_ee_m: [0.0000, 0.0280, -0.0308]
+
+ring_rgb:
+  description: "D435i com a lente RGB no eixo da garra, 20°"
+  camera: D435i
+  parent_frame: end_effector_link
+  child_frame: camera_link
+  xyz: [-0.015, 0.065683, 0.005691]
+  rpy: [0, -1.22173, -1.5708]
+  quat_xyzw: [0.40558, 0.40558, 0.579228, -0.579228]
+  depth_profile: "424x240 (Z mín ~105 mm)"
+  mount_mass_kg_pla: 0.124  # anel impresso (estimativa, sem câmera nem parafusos)
+  mount_com_in_ee_m: [-0.0229, 0.0374, -0.0309]
+
+ring_stereo:
+  description: "D435i com o meio da linha de base no eixo da garra, 20°"
+  camera: D435i
+  parent_frame: end_effector_link
+  child_frame: camera_link
+  xyz: [0.025, 0.065683, 0.005691]
+  rpy: [0, -1.22173, -1.5708]
+  quat_xyzw: [0.40558, 0.40558, 0.579228, -0.579228]
+  depth_profile: "424x240 (Z mín ~105 mm)"
+  mount_mass_kg_pla: 0.118  # anel impresso (estimativa, sem câmera nem parafusos)
+  mount_com_in_ee_m: [0.0059, 0.0375, -0.0309]
+
+ring_d405:
+  description: "D405 com o imageador esquerdo (cor e profundidade) no eixo da garra, 15°"
+  camera: D405
+  parent_frame: end_effector_link
+  child_frame: camera_link
+  xyz: [0, 0.061768, 0.005851]
+  rpy: [0, -1.309, -1.5708]
+  quat_xyzw: [0.430459, 0.430459, 0.560986, -0.560986]
+  depth_profile: "1280x720 (Z mín ~100 mm)"
+  mount_mass_kg_pla: 0.094  # anel impresso (estimativa, sem câmera nem parafusos)
+  mount_com_in_ee_m: [-0.0055, 0.0334, -0.0304]

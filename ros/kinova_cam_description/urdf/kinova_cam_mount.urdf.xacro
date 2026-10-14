@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<!-- Gerado por scripts/ros_export.py (kinova-cam). Não editar à mão.
+
+  Anel bipartido da câmera no punho do Kinova Gen3 6DOF (ros2_kortex).
+
+  Uso (no xacro do robô, depois do braço):
+    <xacro:include filename="$(find kinova_cam_description)/urdf/kinova_cam_mount.urdf.xacro"/>
+    <xacro:kinova_cam_mount parent="end_effector_link" version="ring_rgb"/>
+
+  Parâmetros:
+    parent       link do punho (end_effector_link do ros2_kortex)
+    version      ring | ring_rgb | ring_stereo | ring_d405
+    prefix       prefixo do link da montagem (ex.: o do ros2_kortex)
+    camera_name  prefixo dos frames da RealSense (padrão "camera" -> camera_link)
+    camera_link  true: cria <camera_name>_link (o driver da RealSense publica o
+                 resto da árvore com publish_tf:=true). Use false quando a
+                 câmera vier do xacro oficial (kinova_cam_mount_realsense)
+    camera_mesh  true: malha da câmera para visualização e colisão (MoveIt).
+                 As malhas da câmera (CAD da Intel) não são versionadas: gere com
+                 scripts/ros_export.py, com os STEP oficiais em vendor/
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <xacro:macro name="kinova_cam_mount_geometry" params="part rgba:='0.85 0.45 0.1 1'">
+    <visual>
+      <geometry><mesh filename="package://kinova_cam_description/meshes/${part}.stl" scale="0.001 0.001 0.001"/></geometry>
+      <material name="kinova_cam_${part}"><color rgba="${rgba}"/></material>
+    </visual>
+    <collision>
+      <geometry><mesh filename="package://kinova_cam_description/meshes/${part}.stl" scale="0.001 0.001 0.001"/></geometry>
+    </collision>
+  </xacro:macro>
+
+  <xacro:macro name="kinova_cam_mount"
+      params="parent:=end_effector_link version:=ring_rgb prefix:='' camera_name:=camera camera_link:=true camera_mesh:=false">
+    <!-- referencial da montagem: centro da face do aro Ø75 (mesmos eixos do end_effector_link) -->
+    <joint name="${prefix}camera_mount_joint" type="fixed">
+      <parent link="${parent}"/>
+      <child link="${prefix}camera_mount_link"/>
+      <origin xyz="0 0 0.00287" rpy="0 0 0"/>
+    </joint>
+
+    <!-- ring: D435i centrada no punho, 15° (versão original) -->
+    <xacro:if value="${version == 'ring'}">
+      <link name="${prefix}camera_mount_link">
+        <xacro:kinova_cam_mount_geometry part="ring_camera_half"/>
+        <xacro:kinova_cam_mount_geometry part="ring_lower_half"/>
+        <xacro:if value="${camera_mesh}">
+          <xacro:kinova_cam_mount_geometry part="ring_camera" rgba="0.15 0.15 0.17 1"/>
+        </xacro:if>
+      </link>
+      <xacro:if value="${camera_link}">
+        <joint name="${camera_name}_joint" type="fixed">
+          <parent link="${prefix}camera_mount_link"/>
+          <child link="${camera_name}_link"/>
+          <origin xyz="0.0175 0.053661 0.002326" rpy="0 -1.309 -1.5708"/>
+        </joint>
+        <link name="${camera_name}_link"/>
+      </xacro:if>
+    </xacro:if>
+    <!-- ring_rgb: D435i com a lente RGB no eixo da garra, 20° -->
+    <xacro:if value="${version == 'ring_rgb'}">
+      <link name="${prefix}camera_mount_link">
+        <xacro:kinova_cam_mount_geometry part="ring_rgb_camera_half"/>
+        <xacro:kinova_cam_mount_geometry part="ring_lower_half"/>
+        <xacro:if value="${camera_mesh}">
+          <xacro:kinova_cam_mount_geometry part="ring_rgb_camera" rgba="0.15 0.15 0.17 1"/>
+        </xacro:if>
+      </link>
+      <xacro:if value="${camera_link}">
+        <joint name="${camera_name}_joint" type="fixed">
+          <parent link="${prefix}camera_mount_link"/>
+          <child link="${camera_name}_link"/>
+          <origin xyz="-0.015 0.065683 0.002821" rpy="0 -1.22173 -1.5708"/>
+        </joint>
+        <link name="${camera_name}_link"/>
+      </xacro:if>
+    </xacro:if>
+    <!-- ring_stereo: D435i com o meio da linha de base no eixo da garra, 20° -->
+    <xacro:if value="${version == 'ring_stereo'}">
+      <link name="${prefix}camera_mount_link">
+        <xacro:kinova_cam_mount_geometry part="ring_stereo_camera_half"/>
+        <xacro:kinova_cam_mount_geometry part="ring_lower_half"/>
+        <xacro:if value="${camera_mesh}">
+          <xacro:kinova_cam_mount_geometry part="ring_stereo_camera" rgba="0.15 0.15 0.17 1"/>
+        </xacro:if>
+      </link>
+      <xacro:if value="${camera_link}">
+        <joint name="${camera_name}_joint" type="fixed">
+          <parent link="${prefix}camera_mount_link"/>
+          <child link="${camera_name}_link"/>
+          <origin xyz="0.025 0.065683 0.002821" rpy="0 -1.22173 -1.5708"/>
+        </joint>
+        <link name="${camera_name}_link"/>
+      </xacro:if>
+    </xacro:if>
+    <!-- ring_d405: D405 com o imageador esquerdo (cor e profundidade) no eixo da garra, 15° -->
+    <xacro:if value="${version == 'ring_d405'}">
+      <link name="${prefix}camera_mount_link">
+        <xacro:kinova_cam_mount_geometry part="ring_d405_camera_half"/>
+        <xacro:kinova_cam_mount_geometry part="ring_lower_half"/>
+        <xacro:if value="${camera_mesh}">
+          <xacro:kinova_cam_mount_geometry part="ring_d405_camera" rgba="0.15 0.15 0.17 1"/>
+        </xacro:if>
+      </link>
+      <xacro:if value="${camera_link}">
+        <joint name="${camera_name}_joint" type="fixed">
+          <parent link="${prefix}camera_mount_link"/>
+          <child link="${camera_name}_link"/>
+          <origin xyz="0 0.061768 0.002981" rpy="0 -1.309 -1.5708"/>
+        </joint>
+        <link name="${camera_name}_link"/>
+      </xacro:if>
+    </xacro:if>
+  </xacro:macro>
+</robot>

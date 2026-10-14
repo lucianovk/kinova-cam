@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- Gerado por scripts/ros_export.py (kinova-cam). Não editar à mão.
+
+  Como kinova_cam_mount, mas com a câmera do xacro oficial
+  (realsense2_description): todos os frames da câmera vêm do URDF. Lance o
+  driver com publish_tf:=false para não haver dois publicadores dos mesmos
+  frames, ou use use_nominal_extrinsics:=true só em simulação.
+
+    <xacro:include filename="$(find kinova_cam_description)/urdf/kinova_cam_mount_realsense.urdf.xacro"/>
+    <xacro:kinova_cam_mount_realsense parent="end_effector_link" version="ring_rgb"/>
+-->
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:include filename="$(find kinova_cam_description)/urdf/kinova_cam_mount.urdf.xacro"/>
+  <xacro:include filename="$(find realsense2_description)/urdf/_d435i.urdf.xacro"/>
+  <xacro:include filename="$(find realsense2_description)/urdf/_d405.urdf.xacro"/>
+
+  <xacro:macro name="kinova_cam_mount_realsense"
+      params="parent:=end_effector_link version:=ring_rgb prefix:='' camera_name:=camera use_nominal_extrinsics:=false">
+    <xacro:kinova_cam_mount parent="${parent}" version="${version}" prefix="${prefix}"
+        camera_name="${camera_name}" camera_link="false" camera_mesh="false"/>
+    <!-- origem: <camera_name>_bottom_screw_frame (rosca 1/4-20) no referencial da montagem -->
+
+    <xacro:if value="${version == 'ring'}">
+      <xacro:sensor_d435i parent="${prefix}camera_mount_link" name="${camera_name}"
+          use_nominal_extrinsics="${use_nominal_extrinsics}">
+        <origin xyz="0 0.044331 -0.011148" rpy="0 -1.309 -1.5708"/>
+      </xacro:sensor_d435i>
+    </xacro:if>
+    <xacro:if value="${version == 'ring_rgb'}">
+      <xacro:sensor_d435i parent="${prefix}camera_mount_link" name="${camera_name}"
+          use_nominal_extrinsics="${use_nominal_extrinsics}">
+        <origin xyz="-0.0325 0.057562 -0.011415" rpy="0 -1.22173 -1.5708"/>
+      </xacro:sensor_d435i>
+    </xacro:if>
+    <xacro:if value="${version == 'ring_stereo'}">
+      <xacro:sensor_d435i parent="${prefix}camera_mount_link" name="${camera_name}"
+          use_nominal_extrinsics="${use_nominal_extrinsics}">
+        <origin xyz="0.0075 0.057562 -0.011415" rpy="0 -1.22173 -1.5708"/>
+      </xacro:sensor_d435i>
+    </xacro:if>
+    <xacro:if value="${version == 'ring_d405'}">
+      <xacro:sensor_d405 parent="${prefix}camera_mount_link" name="${camera_name}"
+          use_nominal_extrinsics="${use_nominal_extrinsics}">
+        <origin xyz="-0.009 0.044292 -0.012935" rpy="0 -1.309 -1.5708"/>
+      </xacro:sensor_d405>
+    </xacro:if>
+  </xacro:macro>
+</robot>

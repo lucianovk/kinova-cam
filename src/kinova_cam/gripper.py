@@ -9,7 +9,7 @@ from pathlib import Path
 
 from build123d import Color, Compound, GeomType, Location, Pos, Rot, import_step
 
-from .params import KINOVA, MOUNT
+from .params import KINOVA
 
 VENDOR = Path(__file__).resolve().parents[2] / "vendor"
 GRIPPER_STEP = VENDOR / "Robotiq_2F85_Open.step"
@@ -27,10 +27,9 @@ def _seat_frame(gripper: Compound) -> Location:
     return Pos(c.X, c.Y, c.Z)
 
 
-def robotiq_2f85(seat_z: float = MOUNT.plate_t) -> Compound:
-    """Garra no referencial do punho, com o assento em z = seat_z.
-
-    seat_z = MOUNT.plate_t: sobre o espaçador; 0: direto no bracelete.
+def robotiq_2f85(seat_z: float = 0.0) -> Compound:
+    """Garra no referencial do punho, com o assento em z = seat_z (0: direto no
+    bracelete).
 
     Rot X +90° leva o eixo +Y da garra para +Z; o pino-guia da garra (em +X
     no STEP) cai sobre o furo do pino em +X.

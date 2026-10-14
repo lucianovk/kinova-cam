@@ -1,6 +1,6 @@
 """Varredura de colisão da versão anel: j6 (vs Wrist2) e j5 x j6 (vs antebraço
 e Wrist1), por nuvem de pontos (~1 mm). Rodar da raiz: .venv/bin/python
-scripts/collision_sweep.py (~1 min). Também mostra onde o contato começaria
+scripts/collision_sweep.py [ring|ring_rgb] (~1 min). Também mostra onde o contato começaria
 além do limite da j5, como checagem de sensibilidade."""
 import sys, time
 import numpy as np
@@ -8,6 +8,7 @@ from scipy.spatial import cKDTree
 sys.path.insert(0, "src")
 from build123d import import_step, Rot, Location
 from kinova_cam.assembly import ring_assembly, tool_frame
+from kinova_cam.params import PLACEMENTS
 t0 = time.time()
 rng = np.random.default_rng(0)
 SP = 0.5  # espaçamento da amostragem (mm)
@@ -37,7 +38,8 @@ def mat(loc):
 
 arm = import_step("vendor/GEN3_6DOF_NO-VISION_V01.STEP")
 frame = tool_frame(arm)
-wa = ring_assembly()
+VARIANT = sys.argv[1] if len(sys.argv) > 1 else "ring"
+wa = ring_assembly(PLACEMENTS[VARIANT])
 ours_s = [s for ch in wa.children if not ("Robotiq" in ch.label or "FOV" in ch.label) for s in ch.solids()]
 P = cloud(ours_s)
 L = {l.label: l for l in arm.children}

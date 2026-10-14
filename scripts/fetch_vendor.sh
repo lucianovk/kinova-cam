@@ -9,7 +9,7 @@ unzip -o GEN3_6DOF_CAD_MODELS.zip GEN3_6DOF_NO-VISION_V01.STEP
 
 # CAD oficial das câmeras RealSense D400 (SolidWorks .SLDPRT)
 curl -fL -o RealSense_Depth-Cameras.zip "https://dev.realsenseai.com/download/41950"
-unzip -o RealSense_Depth-Cameras.zip D435i_Solid.SLDPRT
+unzip -o RealSense_Depth-Cameras.zip D435i_Solid.SLDPRT D405_Solid.SLDPRT
 
 # Robotiq 2F-85 aberta, com dedos (mesmo arquivo do site da Robotiq)
 unzip -p GEN3_6DOF_CAD_MODELS.zip 2F85-OPENED_20190924.STEP > Robotiq_2F85_Open.step
