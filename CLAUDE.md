@@ -35,6 +35,8 @@ português.
 - Câmeras em `params.CameraSpec` (D435I, D405); `CamPlacement.cam`. STEP da
   D405: o usuário converteu no Onshape → `vendor/D405_Solid.step` (corpo +
   vidro no mesmo arquivo; o CAD não tem lentes nem nada da óptica).
+- Os 3 STEP das câmeras em vendor/ são versionados (pedido do usuário,
+  2026-10-13; exceções no .gitignore); o resto de vendor/ não.
 - Convenção conferida pelo USB-C: +X local = esquerda da câmera nos dois CAD
   (D435i: USB em -X = direita, como no URDF; D405: USB em +X = esquerda).
 - Profundidade nos dedos (garra aberta, `scripts/depth_view.py`): pontas com

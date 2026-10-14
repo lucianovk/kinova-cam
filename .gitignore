@@ -1,5 +1,10 @@
 .venv/
-vendor/
+# CAD de terceiros baixado por scripts/fetch_vendor.sh; versionar só os STEP
+# das câmeras, convertidos à mão no Onshape (a Intel só publica .SLDPRT)
+vendor/*
+!vendor/D435i_Solid - D435i Solid.step
+!vendor/D435i_Solid - D435i cvr.step
+!vendor/D405_Solid.step
 __pycache__/
 # saídas: versionar só as peças e as imagens; montagens (com CAD de terceiros) se regeneram
 out/*

@@ -330,10 +330,11 @@ Ao editar `params.py`, rode `view.py` de novo; a câmera do viewer é mantida.
 ## CAD das câmeras
 
 A RealSense só publica o CAD em SolidWorks (`D435i_Solid.SLDPRT` e
-`D405_Solid.SLDPRT`, baixados por `scripts/fetch_vendor.sh`). Para usá-los,
-converta para STEP no Onshape: importe o `.SLDPRT`, use **Translate…** se a
-aba vier só como arquivo e **Export → STEP (mm)**. Salve em `vendor/` com os
-nomes que o Onshape gera:
+`D405_Solid.SLDPRT`, baixados por `scripts/fetch_vendor.sh`). Os STEP
+convertidos **já estão versionados em `vendor/`** (o resto de `vendor/` é
+baixado pelo script). Para converter de novo, use o Onshape: importe o
+`.SLDPRT`, use **Translate…** se a aba vier só como arquivo e
+**Export → STEP (mm)**. Os nomes são os que o Onshape gera:
 
 - `D435i_Solid - D435i Solid.step` (corpo) e `D435i_Solid - D435i cvr.step`
   (vidro frontal, opcional)
